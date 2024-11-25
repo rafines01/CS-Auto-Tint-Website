@@ -149,8 +149,9 @@
       background: #E9931B;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      font-size: 20px;    /* Increase the font size */
+      padding: 20px 30px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
@@ -196,8 +197,8 @@
             <h4>Front Two <small>1 hr+</small></h4>
             <p style="text-align: start;">Tint your front two windows for added privacy and sun protection. Choose between Carbon or Ceramic film for the perfect balance of style and comfort.</p>
             <ul>
-                <li>Carbon Film: $100 <span class="add-to-cart" onclick="addService('Windshield - Carbon Film $100')"><i class="fas fa-plus"></i> Add</span></li>
-                <li>Ceramic Film: $130 <span class="add-to-cart" onclick="addService('Windshield - Ceramic Film $130')"><i class="fas fa-plus"></i> Add</span></li>
+                <li>Carbon Film: $80 <span class="add-to-cart" onclick="addService('Windshield - Carbon Film $100')"><i class="fas fa-plus"></i> Add</span></li>
+                <li>Ceramic Film: $120 <span class="add-to-cart" onclick="addService('Windshield - Ceramic Film $130')"><i class="fas fa-plus"></i> Add</span></li>
             </ul>
           </div>
 
@@ -270,7 +271,7 @@
     }
 
     // Send selected services via Formspree
-    fetch("https://formspree.io/f/xjkvelvq", {
+    fetch("https://formspree.io/f/mgvelgwv", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -284,7 +285,7 @@
         if (response.ok) {
           // Notify user and redirect to Calendly
           alert("Your services have been noted. Proceeding to Calendly...");
-          window.location.href = "https://calendly.com/rafee-s1259/30min"; // Use location.href for better compatibility
+          window.location.href = "https://calendly.com/cs-autotint1259/schedule-appointment"; // Use location.href for better compatibility
           document.getElementById("booking-list").innerHTML = ""; // Clear list after booking
         } else {
           alert("Failed to send your booking request. Please try again.");
