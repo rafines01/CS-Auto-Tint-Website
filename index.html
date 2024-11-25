@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Premium Car Tinting | Your Tint Solution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="High-quality car tinting services tailored to your needs." />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="./img/logo.png" alt="Company Logo" style="width: auto; height: 40px;" />
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    
+  <!-- End header -->
+  <body class="background-image">
+
+
+  <!-- Background style -->
+  <style>
+    body {
+      background-image: url('img/background.jpg'); /* Replace with path to your background image */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #000000;
+      font-family: Arial, sans-serif;
+    }
+
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0px;
+    }
+
+    .service-v1 {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .service-v1 img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .testimonial-area {
+      background-color: #f8f8f8;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer .widgetheading {
+      font-weight: bold;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer ul a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+<!-- Slider section -->
+<section id="featured">
+    <div class="slider">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="./img/slider1.JPG" alt="Quality Tinting" >
+                <div class="slide-caption">
+                    <h3>Professional Tinting Services</h3>
+                    <p>Enhancing privacy, reducing glare, improving comfort.</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="./img/slider2.jpg" alt="UV Protection" >
+                <div class="slide-caption">
+                    <h3>Advanced UV Protection</h3>
+                    <p>Shield your car's interior from harmful UV rays.</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="./img/slider3.JPG" alt="Long-lasting Quality" >
+                <div class="slide-caption">
+                    <h3>Guaranteed Quality</h3>
+                    <p>Premium materials ensure long-lasting results.</p>
+                </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide">
+                <img src="./img/slider4.JPG" alt="Long-lasting Quality" >
+                <div class="slide-caption">
+                    <h3>Guaranteed Quality</h3>
+                    <p>Premium materials ensure long-lasting results.</p>
+                </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="slide">
+              <img src="./img/slider5.JPG" alt="Long-lasting Quality" >
+              <div class="slide-caption">
+                  <h3>Guaranteed Quality</h3>
+                  <p>Premium materials ensure long-lasting results.</p>
+              </div>
+          </div>
+          <!-- Slide 6 -->
+          <div class="slide">
+            <img src="./img/slider6.JPG" alt="Long-lasting Quality" >
+            <div class="slide-caption">
+                <h3>Guaranteed Quality</h3>
+                <p>Premium materials ensure long-lasting results.</p>
+            </div>
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide">
+          <img src="./img/slider7.JPG" alt="Long-lasting Quality" >
+          <div class="slide-caption">
+              <h3>Guaranteed Quality</h3>
+              <p>Premium materials ensure long-lasting results.</p>
+          </div>
+      </div>
+        <!-- Slide 8 -->
+        <div class="slide">
+          <img src="./img/slider8.JPG" alt="Long-lasting Quality" >
+          <div class="slide-caption">
+              <h3>Guaranteed Quality</h3>
+              <p>Premium materials ensure long-lasting results.</p>
+          </div>
+      </div>
+            <!-- Slide 9 -->
+            <div class="slide">
+              <img src="./img/slider9.JPG" alt="Long-lasting Quality" >
+              <div class="slide-caption">
+                  <h3>Guaranteed Quality</h3>
+                  <p>Premium materials ensure long-lasting results.</p>
+              </div>
+          </div>
+            <!-- Slide 10 -->
+            <div class="slide">
+              <img src="./img/slider10.JPG" alt="Long-lasting Quality" >
+              <div class="slide-caption">
+                  <h3>Guaranteed Quality</h3>
+                  <p>Premium materials ensure long-lasting results.</p>
+              </div>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+<!-- End slider section -->
+
+  
+  <!-- JavaScript for Slider -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'flex' : 'none';
+    });
+    }
+
+    function changeSlide(n) {
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+    showSlide(slideIndex);
+    }
+
+    // Auto slide every 5 seconds
+    //setInterval(() => changeSlide(1), 5000);
+
+    // Initial display
+    showSlide(slideIndex);
+
+  </script>
+  
+
+  <!-- Services section -->
+  <section>
+    <div class="container">
+      <div class="service-v1">
+        <div>
+          <img src="./img/service1.jpeg" alt="Tint Shades" >
+          <h2>Custom Tint Shades</h2>
+          <p>Choose from a variety of tint shades to match your style and needs.</p>
+        </div>
+        <div>
+          <img src="./img/service2.jpeg" alt="Automotive Window Tinting" >
+          <h2>Automotive Window Tinting</h2>
+          <p>Professional tinting for all types of vehicles, ensuring a perfect finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End services section -->
+
+  <!-- Testimonials section -->
+  <div class="testimonial-area">
+    <div class="container">
+      <h3>What Our Clients Say</h3>
+      <p>"Fantastic service and quality! My car looks amazing with the new tint." - Sarah T.</p>
+      <p>"Best tinting service I’ve ever experienced. Professional and timely!" - Mike R.</p>
+      <p>"Highly recommend! Great customer service and excellent tint options." - Lisa K.</p>
+    </div>
+  </div>
+  <!-- End testimonials section -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+        <!-- Contact Us Column -->
+        <div class="footer-column">
+            <h5 class="widgetheading">Contact Us</h5>
+            <p><strong>CS Auto Tint</strong><br>
+               Pioneer Blvd, Norwalk<br>
+               Phone: (562) 220-8850<br>
+               Email: rafee.s1259@gmail.com
+            </p>
+        </div>
+        
+        <!-- Quick Links Column -->
+        <div class="footer-column">
+            <h5 class="widgetheading">Quick Links</h5>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="pricing.html">Book Appointment</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <!-- Stay Connected Column -->
+        <div class="footer-column">
+            <h5 class="widgetheading">Stay Connected</h5>
+            <p>
+                <a href="https://www.instagram.com/cs_auto.tint/" target="_blank" title="Instagram">Instagram</a> |
+                <a href="https://www.youtube.com/@rafee_3925" target="_blank" title="Youtube">Youtube</a> |
+                <a href="https://www.tiktok.com/@marafeesom1" target="_blank" title="Tiktok">Tiktok</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+  <!-- End footer -->
+</div>
+</body>
+</html>

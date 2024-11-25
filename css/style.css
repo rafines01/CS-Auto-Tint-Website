@@ -1,0 +1,368 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:400,600,700');
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6em;
+    color: #000000;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: #2FADDE;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #e98c1b;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 700;
+    color: #010101;
+    margin-bottom: 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    padding: 20px 0;
+    color: #fff;
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .navbar-brand img {
+    max-width: 100px;
+    height: auto;
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav li a {
+    color: #E9931B;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 15px;
+    display: block;
+}
+
+.nav li.active a, .nav li a:hover {
+    color: #2FADDE;
+}
+
+/* Slider Container */
+#featured .slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 80vh;
+    background-color: #818181;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#featured .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#featured .slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+#featured .slide img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Slide Captions */
+#featured .slide-caption {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#featured .slide-caption h3 {
+    margin: 0;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #E9931B;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+#featured .slide-caption p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+#featured {
+    padding: 0;
+    text-align: center;
+    color: #FFF;
+}
+
+/* Navigation Buttons */
+#featured .nav-buttons {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#featured .nav-buttons button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#featured .nav-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #featured .slide-caption {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #featured .nav-buttons button {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+body.background-image {
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Services images */
+.service-v1 img {
+    width: 100%;
+    height: 100%;
+    max-width: 550px;
+    max-height: 350px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Flex container for services */
+.service-v1 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.service-v1 div {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Pricing Page */
+.pricing-box-item {
+    background: #cb1717;
+    color: #ebebeb;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-box-item h3,
+.pricing-box-item .pricing-terms h6 {
+    color: #E9931B;
+}
+
+.pricing-item p {
+    font-size: 10px;
+    color: #666;
+    text-align: start;
+    line-height: 1.2;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 28px;
+    color: #E9931B;
+    margin-bottom: 20px;
+}
+
+/* Contact Form */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    border: 1px solid #E9931B;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.contact-form input[type="submit"] {
+    background: #E9931B;
+    color: #FFF;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.contact-form input[type="submit"]:hover {
+    background: #2FADDE;
+}
+
+/* Footer Styles for Home and Contact page*/
+footer {
+    background: #f0f0f0;
+    color: #000000;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+footer .footer-column {
+    flex: 1;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    text-align: center; /* Ensures text is centered */
+    margin-bottom: 15px;
+}
+
+footer .widgetheading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #E9931B;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+footer p,
+footer ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    text-align: center; /* Ensures any paragraph or list inside the footer is centered */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin: 8px 0;
+    text-align: center; /* Center aligns each list item */
+}
+
+footer ul a {   /*contact page*/
+    color: #050606;
+    text-decoration: none;
+    text-align: center;
+}
+
+footer ul a:hover {
+    color: #FFF;
+}
+
+
+/* Optional: Adjusting container for larger screens */
+@media (min-width: 768px) {
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    footer .container > div {
+        flex: 1;
+        margin: 0 10px;
+    }
+}

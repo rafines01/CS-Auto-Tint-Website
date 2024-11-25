@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pricing | Premium Tint Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Affordable car tinting solutions tailored to your needs." />
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM5QQZ6duoa0UyC0RJpI2acWp7HfpZf9l5aifj" crossorigin="anonymous">
+  
+  <!-- Calendly Embed Script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+
+  <body>
+    <div id="wrapper">
+        <header>
+            <div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                          <img src="./img/logo.png" alt="Company Logo" style="width: auto; height: 40px;" />
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+  
+  <style>
+    /* Custom Styling for Pricing Page */
+    .pricing-section {
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .pricing-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .pricing-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      position: relative;
+      text-align: left;
+    }
+
+    .pricing-item h4 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .pricing-item ul, .pricing-item p {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #555;
+    }
+
+    .pricing-item ul li {
+      font-size: 16px;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .add-to-cart {
+      background: #E9931B;
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: 8px;
+    }
+
+    .add-to-cart:hover {
+      background: #2FADDE;
+    }
+
+    /* Booking Section Styling */
+    .booking-section {
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .booking-section h4 {
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #booking-list {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0;
+      font-size: 16px;
+    }
+
+    #booking-list li {
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .remove-btn {
+      background: #d9534f;
+      color: #fff;
+      border: none;
+      padding: 5px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .remove-btn:hover {
+      background: #c9302c;
+    }
+
+    .btn-theme {
+      background: #E9931B;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-theme:hover {
+      background: #2FADDE;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- Pricing and Booking Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <h2 class="section-title">Our Pricing</h2>
+        <p style="text-align: center; color: #666;">Select from a range of high-quality tint films and services.</p>
+
+        <div class="pricing-options">
+          <!-- Carbon Film -->
+          <div class="pricing-item">
+            <h4>Carbon Film <small>3 hr+</small></h4>
+            <p style="text-align: start;">Get enhanced UV protection and improved privacy for your vehicle with our Carbon Film tinting, applied to all windows except the front windshield.</p>
+            <ul>
+              <li>Coupe: $180 <span class="add-to-cart" onclick="addService('Carbon Film - Coupe $180')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Sedan: $200 <span class="add-to-cart" onclick="addService('Carbon Film - Sedan $200')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Truck/SUV: $220 <span class="add-to-cart" onclick="addService('Carbon Film - Truck/SUV $220')"><i class="fas fa-plus"></i> Add</span></li>
+            </ul>
+          </div>
+
+          <!-- Ceramic Film -->
+          <div class="pricing-item">
+            <h4>Ceramic Film <small>3 hr+</small></h4>
+            <p style="text-align: start;">Experience top-tier heat rejection and superior UV protection with our Ceramic Film tint, applied to all windows except the front windshield.</p>
+            <ul>
+              <li>Coupe: $220 <span class="add-to-cart" onclick="addService('Ceramic Film - Coupe $220')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Sedan: $240 <span class="add-to-cart" onclick="addService('Ceramic Film - Sedan $240')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Truck/SUV: $260 <span class="add-to-cart" onclick="addService('Ceramic Film - Truck/SUV $260')"><i class="fas fa-plus"></i> Add</span></li>
+            </ul>
+          </div>
+
+          <!-- Front Two -->
+          <div class="pricing-item">
+            <h4>Front Two <small>1 hr+</small></h4>
+            <p style="text-align: start;">Tint your front two windows for added privacy and sun protection. Choose between Carbon or Ceramic film for the perfect balance of style and comfort.</p>
+            <ul>
+                <li>Carbon Film: $100 <span class="add-to-cart" onclick="addService('Windshield - Carbon Film $100')"><i class="fas fa-plus"></i> Add</span></li>
+                <li>Ceramic Film: $130 <span class="add-to-cart" onclick="addService('Windshield - Ceramic Film $130')"><i class="fas fa-plus"></i> Add</span></li>
+            </ul>
+          </div>
+
+          <!-- Windshield -->
+          <div class="pricing-item">
+            <h4>Windshield <small>1 hr+</small></h4>
+            <p style="text-align: start;">Protect your windshield from harmful UV rays and reduce interior heat. Choose between Carbon or Ceramic film to best suit your needs.</p>
+            <ul>
+              <li>Carbon Film: $100 <span class="add-to-cart" onclick="addService('Windshield - Carbon Film $100')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Ceramic Film: $130 <span class="add-to-cart" onclick="addService('Windshield - Ceramic Film $130')"><i class="fas fa-plus"></i> Add</span></li>
+            </ul>
+          </div>
+
+          <!-- Sunroof -->
+          <div class="pricing-item">
+            <h4>Sunroof <small>30 min</small></h4>
+            <p style="text-align: start;">Keep your vehicle cooler by tinting your sunroof. Whether you have a regular or panoramic sunroof, we’ve got you covered.</p>
+            <ul>
+              <li>Regular: $50 <span class="add-to-cart" onclick="addService('Sunroof - Regular $50')"><i class="fas fa-plus"></i> Add</span></li>
+              <li>Panoramic: $80 <span class="add-to-cart" onclick="addService('Sunroof - Panoramic $80')"><i class="fas fa-plus"></i> Add</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pricing and Booking Section -->
+    <section class="container">
+        <div class="row">
+          <!-- Pricing Details -->
+          <div class="col-md-8">
+            <!-- Your pricing items go here -->
+          </div>
+  
+          <!-- Booking Section -->
+          <div class="col-md-4">
+            <div class="booking-section">
+              <h4>Book Your Service</h4>
+              <p>Select your services and add to your booking list.</p>
+              <ul id="booking-list"></ul>
+              <button class="btn btn-theme" onclick="submitBooking()">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  
+   
+  <script>
+  // JavaScript for booking functionality
+  function addService(service) {
+    const list = document.getElementById("booking-list");
+    const item = document.createElement("li");
+
+    // Create item content with service name and remove button
+    item.innerHTML = `${service} <button class="remove-btn" onclick="this.parentElement.remove()">Remove</button>`;
+    list.appendChild(item);
+  }
+
+  function submitBooking() {
+    const listItems = document.querySelectorAll("#booking-list li");
+    let selectedServices = [];
+
+    // Collect selected services
+    listItems.forEach((item) => {
+      selectedServices.push(item.textContent.replace("Remove", "").trim());
+    });
+
+    if (selectedServices.length === 0) {
+      alert("Please select at least one service before booking.");
+      return;
+    }
+
+    // Send selected services via Formspree
+    fetch("https://formspree.io/f/xjkvelvq", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        services: selectedServices.join(", "),
+        _subject: "New Service Booking Request",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Notify user and redirect to Calendly
+          alert("Your services have been noted. Proceeding to Calendly...");
+          window.location.href = "https://calendly.com/rafee-s1259/30min"; // Use location.href for better compatibility
+          document.getElementById("booking-list").innerHTML = ""; // Clear list after booking
+        } else {
+          alert("Failed to send your booking request. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again later.");
+      });
+  }
+  </script>
+
+  </body>
+  </html>
