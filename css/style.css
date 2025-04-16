@@ -204,7 +204,7 @@ body.background-image {
     background-position: center;
 }
 
-/* Services images
+/* Services images */
 .service-v1 img {
     width: 100%;
     height: 100%;
@@ -212,21 +212,22 @@ body.background-image {
     max-height: 350px;
     object-fit: cover;
     display: block;
+    margin: 0 auto;
 }
 
-
+/* Flex container for services */
 .service-v1 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .service-v1 div {
     padding: 10px;
     text-align: center;
-} */
+}
 
 /* Pricing Page */
 .pricing-box-item {
