@@ -135,9 +135,9 @@ h1, h2, h3, h4, h5, h6 {
 #featured .slide-caption h3 {
     margin: 0;
     padding: 10px;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 700;
-    color: #E9931B;
+    color: #d4e91b;  /*E9931B*/
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
