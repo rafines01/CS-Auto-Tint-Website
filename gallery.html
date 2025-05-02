@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | CS Auto Tint</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+
+</head>
+
+<script>
+  const lightbox = new SimpleLightbox('.gallery-item a', { /* options */ });
+</script>
+
+<body>
+
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="./img/logo.png" alt="Company Logo" style="width: auto; height: 40px;" />
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <!-- <li><a href="pricing.html">Pricing</a></li> -->
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+
+<section class="gallery-tab">
+    <h2>Browse Recent Builds</h2>
+  
+    <!-- Filter buttons (optional JS later) -->
+    <div class="filter-buttons">
+      <button>Audi</button>
+      <button>Aston Martin</button>
+      <button>BMW</button>
+      <button>Corvette</button>
+      <button>Tesla</button>
+      <!-- Add more as needed -->
+    </div>
+  
+    <!-- Category Row: AUDI -->
+    <div class="gallery-row">
+      <h3 class="car-make">Audi</h3>
+      <div class="scroll-container">
+        <div class="gallery-item"> <a href="img/slider1.JPG" class="glightbox"><img src="img/slider1.JPG" alt="Audi" /></a></div>
+        <div class="gallery-item"> <a href="img/slider1.JPG" class="glightbox"><img src="img/slider1.JPG" alt="Audi" /></a></div>
+        <div class="gallery-item"> <a href="img/slider1.JPG" class="glightbox"><img src="img/slider1.JPG" alt="Audi" /></a></div>
+        <div class="gallery-item"><img src="img/slider1.JPG" alt="Audi" /></div>
+        <div class="gallery-item"><img src="img/slider1.JPG" alt="Audi" /></div>
+        <!-- <div class="gallery-item"><img src="img/slider1.JPG" alt="Audi" /></div> -->
+        <!-- Add more Audi images -->
+      </div>
+    </div>
+  
+    <!-- Category Row: Aston Martin -->
+    <div class="gallery-row">
+      <h3 class="car-make">Aston Martin</h3>
+      <div class="scroll-container">
+        <div class="gallery-item"><img src="img/aston1.jpg" alt="Aston" /></div>
+        <div class="gallery-item"><img src="img/aston2.jpg" alt="Aston" /></div>
+        <div class="gallery-item"><img src="img/aston3.jpg" alt="Aston" /></div>
+      </div>
+    </div>
+  
+    <!-- Repeat for other car makes -->
+  </section>
+  

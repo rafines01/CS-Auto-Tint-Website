@@ -4,29 +4,32 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<!-- updated for thecastleautotint.com -->
 
 <url>
-  <loc>https://rafines01.github.io/CS-Auto-Tint-Website/</loc>
+  <loc>https://thecastleautotint.com/</loc>
   <lastmod>2024-12-06T03:00:18+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://rafines01.github.io/CS-Auto-Tint-Website/index.html</loc>
+  <loc>https://thecastleautotint.com/index.html</loc>
   <lastmod>2024-12-06T03:00:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://rafines01.github.io/CS-Auto-Tint-Website/pricing.html</loc>
+  <loc>https://thecastleautotint.com/pricing.html</loc>
   <lastmod>2024-12-06T03:00:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://rafines01.github.io/CS-Auto-Tint-Website/contact.html</loc>
+  <loc>https://thecastleautotint.com/contact.html</loc>
   <lastmod>2024-12-06T03:00:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://thecastleautotint.com/gallery.html</loc>
+  <lastmod>2025-05-02T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
