@@ -49,31 +49,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
 }
 
-/* Navbar logo sizing — corrected */
-.navbar-header,
-.navbar .navbar-brand {
-  display: flex;
-  align-items: center;
+.navbar .navbar-brand img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 20px; /* Adds space left and right */
 }
-
-/* LOGO */
-.navbar .navbar-brand .logo {
-  height: 42px;       /* reliable for navbars */
-  width: auto;        /* preserve aspect ratio */
-  max-width: none;
-  display: block;
-  margin: 0 16px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .navbar .navbar-brand .logo {
-    height: 36px;
-    margin: 0 12px;
-  }
-}
-
-
 
 .nav {
     display: flex;
@@ -202,7 +183,6 @@ h1, h2, h3, h4, h5, h6 {
 #featured .nav-buttons button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -416,115 +396,62 @@ footer ul a:hover {
     }
 }
 
-/* ===== CTA polish: readable colors + equal button sizing ===== */
-
 .cta-section {
-  color: #e7e7e7;                 /* readable default text */
-}
-
-/* Keep your headings readable */
-.cta-section h1,
-.cta-section h2 {
-  color: #f2f2f2;
-}
-
-/* Softer paragraph text (still readable) */
-.cta-section p {
-  color: #b7b7b7;
-}
-
-/* Make BOTH <a> and <button> look identical */
-.cta-buttons .cta-btn,
-.cta-buttons button.cta-btn {
-  display: inline-flex;            /* makes button + link same box model */
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  min-height: 52px;                /* forces same height */
-  padding: 14px 26px;              /* consistent padding */
-  line-height: 1;                  /* prevents weird vertical sizing */
-  font-weight: 700;
-  font-size: 16px;
-
-  border-radius: 6px;
-  border: 2px solid rgba(255,255,255,0.75);
-  background: transparent;
-  color: #f2f2f2;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* Focus style for accessibility */
-.cta-buttons .cta-btn:focus,
-.cta-buttons button.cta-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(233,147,27,0.35);
-}
-
-/* Phone button */
-.phone-btn {
-  border-color: rgba(255,255,255,0.75);
-  color: #f2f2f2;
-}
-
-.phone-btn:hover {
-  background: rgba(255,255,255,0.10); /* not too bright */
-  color: #ffffff;
-}
-
-/* Quote button (keep your brand orange but not neon) */
-.quote-btn {
-  border-color: rgba(233,147,27,0.9);
-  color: #E9931B;
-}
-
-.quote-btn:hover {
-  background: rgba(233,147,27,0.12);  /* subtle orange tint */
-  color: #ffffff;
-}
-
-/* Dropdown positioning + width match */
-.cta-contact {
-  position: relative;
-  display: inline-flex;
-}
-
-/* Make dropdown same width as the phone button */
-.cta-dropdown {
-  width: 100%;
-  min-width: 240px;                /* fallback */
-}
-
-/* Dropdown links readable + consistent */
-.cta-dropdown a {
-  color: #eaeaea;
-}
-
-.cta-dropdown a:hover {
-  background: rgba(255,255,255,0.08);
-  color: #E9931B;
-}
-
-/* Mobile: stack buttons full-width */
-@media (max-width: 768px) {
+    text-align: center;
+    background-color: #111;
+    color: rgb(199, 127, 127);
+    padding: 60px 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .cta-section h1, .cta-section h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #e1e1e1;
+  }
+  
+  .cta-section p {
+    color: #888;
+    margin-bottom: 40px;
+  }
+  
   .cta-buttons {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-
-  .cta-contact,
-  .cta-buttons .cta-btn,
-  .cta-buttons button.cta-btn {
-    width: 100%;
+  
+  .cta-btn {
+    padding: 15px 30px;
+    border: 2px solid white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
   }
-
-  .cta-dropdown {
-    min-width: 100%;
+  
+  .phone-btn {
+    color: white;
+    border-color: white;
   }
-}
-
+  
+  .phone-btn:hover {
+    background-color: white;
+    color: #111;
+  }
+  
+  .quote-btn {
+    border-color: #e3e3e3;
+    color: #de9e2f;
+  }
+  
+  .quote-btn:hover {
+    background-color: #1d1f1f;
+    color: white;
+  }
   
 
   /* #gallery {
