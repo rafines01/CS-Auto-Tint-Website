@@ -49,12 +49,33 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
 }
 
-.navbar .navbar-brand img {
-    max-width: 100px;
-    height: auto;
-    display: block;
-    margin: 0 20px; /* Adds space left and right */
+/* Navbar logo sizing (fixed) */
+.navbar-header {
+  display: flex;
+  align-items: center;
 }
+
+.navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .navbar-brand .logo {
+  width: 170px;      /* <-- controls how big it looks */
+  height: auto;      /* keeps proportions */
+  max-width: none;   /* removes the 100px cap */
+  display: block;
+  margin: 0 20px;
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+  .navbar .navbar-brand .logo {
+    width: 140px;
+    margin: 0 12px;
+  }
+}
+
 
 .nav {
     display: flex;
