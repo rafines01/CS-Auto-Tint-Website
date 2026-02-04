@@ -206,9 +206,15 @@
   <p>It will only take one phone call to choose us</p>
 
   <div class="cta-buttons">
-    <a href="tel:5622208850" class="cta-btn phone-btn">
+    <button class="cta-btn phone-btn cta-dropdown-btn" type="button" aria-expanded="false">
       📞 (562) 220-8850
-    </a>
+      <span class="caret">▾</span>
+    </button>
+
+    <div class="cta-dropdown" role="menu">
+      <a href="tel:5622208850" role="menuitem">📞 Call now</a>
+      <a href="sms:5622208850" role="menuitem">💬 Text us</a>
+    </div>
     <a href="contact.html" class="cta-btn quote-btn">
       GET A FREE QUOTE
     </a>
@@ -317,5 +323,34 @@
 
   <!-- End footer -->
 </div>
+<script>
+  (function () {
+    const contact = document.querySelector('.cta-contact');
+    if (!contact) return;
+
+    const btn = contact.querySelector('.cta-dropdown-btn');
+
+    function closeDropdown() {
+      contact.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const isOpen = contact.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close if you click outside
+    document.addEventListener('click', function (e) {
+      if (!contact.contains(e.target)) closeDropdown();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeDropdown();
+    });
+  })();
+</script>
 </body>
 </html>

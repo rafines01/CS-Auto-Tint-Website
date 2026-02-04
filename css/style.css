@@ -184,6 +184,73 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+
+
+/* CTA dropdown wrapper */
+.cta-contact {
+  position: relative;
+  display: inline-block;
+}
+
+/* Make the button look like your current CTA button */
+.cta-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Caret */
+.cta-dropdown-btn .caret {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Dropdown menu */
+.cta-dropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  min-width: 220px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Show when active */
+.cta-contact.open .cta-dropdown {
+  display: block;
+}
+
+.cta-dropdown a {
+  display: block;
+  padding: 12px 14px;
+  color: #e3e3e3;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.cta-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.cta-dropdown a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #E9931B;
+}
+
+/* Mobile: make dropdown full-width under button (optional but nice) */
+@media (max-width: 768px) {
+  .cta-dropdown {
+    min-width: 100%;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     #featured .slide-caption {
