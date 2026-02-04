@@ -201,25 +201,30 @@
 <!-- End slider section -->
 
 <!-- CTA Section -->
+<!-- CTA Section -->
 <section class="cta-section">
   <h2>Schedule Your Appointment Today</h2>
   <p>It will only take one phone call to choose us</p>
 
   <div class="cta-buttons">
-    <button class="cta-btn phone-btn cta-dropdown-btn" type="button" aria-expanded="false">
-      📞 (562) 220-8850
-      <span class="caret">▾</span>
-    </button>
+    <div class="cta-contact">
+      <button class="cta-btn phone-btn cta-dropdown-btn" type="button" aria-expanded="false">
+        📞 (562) 220-8850
+        <span class="caret">▾</span>
+      </button>
 
-    <div class="cta-dropdown" role="menu">
-      <a href="tel:5622208850" role="menuitem">📞 Call now</a>
-      <a href="sms:5622208850" role="menuitem">💬 Text us</a>
+      <div class="cta-dropdown" role="menu">
+        <a href="tel:5622208850" role="menuitem">📞 Call now</a>
+        <a href="sms:5622208850" role="menuitem">💬 Text us</a>
+      </div>
     </div>
+
     <a href="contact.html" class="cta-btn quote-btn">
       GET A FREE QUOTE
     </a>
   </div>
-</section>  
+</section>
+
 
   <!-- JavaScript for Slider -->
   <script>
@@ -325,32 +330,35 @@
 </div>
 <script>
   (function () {
-    const contact = document.querySelector('.cta-contact');
-    if (!contact) return;
-
-    const btn = contact.querySelector('.cta-dropdown-btn');
+    const btn = document.querySelector('.cta-dropdown-btn');
+    const dropdown = document.querySelector('.cta-dropdown');
+    if (!btn || !dropdown) return;
 
     function closeDropdown() {
-      contact.classList.remove('open');
+      dropdown.style.display = 'none';
       btn.setAttribute('aria-expanded', 'false');
     }
 
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      const isOpen = contact.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        dropdown.style.display = 'block';
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
 
-    // Close if you click outside
     document.addEventListener('click', function (e) {
-      if (!contact.contains(e.target)) closeDropdown();
+      if (!btn.contains(e.target) && !dropdown.contains(e.target)) closeDropdown();
     });
 
-    // Close on Escape
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeDropdown();
     });
   })();
 </script>
+
 </body>
 </html>
