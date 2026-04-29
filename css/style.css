@@ -268,7 +268,7 @@ body.background-image {
 
 /* Contact Form */
 .contact-form input[type="text"],
-.contact-form input[type="email"],
+.contact-form input[type="tel"],
 .contact-form textarea {
     border: 1px solid #E9931B;
     border-radius: 5px;
