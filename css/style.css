@@ -116,8 +116,6 @@ a {
   line-height: 1.75;
 }
 
-
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -133,7 +131,6 @@ a {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-
 
 /* =========================
    Shared Header / Navigation
@@ -1025,15 +1022,7 @@ a {
   }
 
   .nav {
-    min-height: auto;
-    padding: 10px 0;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .brand {
-    width: 100%;
-    justify-content: center;
+    min-height: 66px;
   }
 
   .brand-logo,
@@ -1043,37 +1032,21 @@ a {
   }
 
   .brand-name {
-    max-width: none;
+    max-width: 178px;
     font-size: 0.91rem;
   }
 
-.nav-links {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
-}
-
-  .nav-links a,
   .nav-links a:not(.nav-call) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 8px 4px;
-    border-radius: 8px;
-    font-size: 0.73rem;
-    text-align: center;
+    display: none;
   }
 
-  .nav-links a[aria-current="page"] {
-    background: #ffffff;
-    box-shadow: 0 1px 4px rgba(25, 25, 25, 0.08);
+  .nav-links {
+    gap: 0;
   }
 
   .nav-call {
-    padding: 8px 4px;
-    font-size: 0.73rem;
+    padding: 9px 13px;
+    font-size: 0.8rem;
   }
 
   .home-hero {
