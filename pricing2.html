@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Castle Auto Tint | Pricing & Booking</title>
+  <meta
+    name="description"
+    content="Build an instant tint quote, review your estimated price and service time, and book with The Castle Auto Tint."
+  />
+  <link href="css/style.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --castle-orange: #e9931b;
+      --castle-orange-dark: #c97708;
+      --castle-blue: #2fadde;
+      --castle-ink: #17212b;
+      --castle-text: #3e4a55;
+      --castle-muted: #6b7783;
+      --castle-surface: #ffffff;
+      --castle-background: #f4f6f8;
+      --castle-border: #dfe5ea;
+      --castle-success: #16794d;
+      --castle-danger: #b42318;
+      --shadow-sm: 0 4px 16px rgba(23, 33, 43, 0.08);
+      --shadow-lg: 0 18px 50px rgba(23, 33, 43, 0.18);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--castle-text);
+      background: var(--castle-background);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page-container {
+      width: min(1180px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    /* Existing site navigation */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--castle-border);
+    }
+
+    .navbar .container {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 68px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .navbar-brand {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      width: auto;
+      height: 40px;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .nav a {
+      color: var(--castle-ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--castle-orange-dark);
+    }
+
+    /* Page heading */
+    .pricing-hero {
+      padding: 42px 0 26px;
+      text-align: center;
+    }
+
+    .pricing-hero__eyebrow {
+      margin: 0 0 8px;
+      color: var(--castle-orange-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .pricing-hero h1 {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--castle-ink);
+      font-size: clamp(2rem, 7vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .pricing-hero__subtitle {
+      max-width: 680px;
+      margin: 14px auto 0;
+      color: var(--castle-muted);
+      font-size: clamp(1rem, 2.8vw, 1.12rem);
+    }
+
+    .pricing-hero__steps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .pricing-hero__step {
+      padding: 7px 11px;
+      border: 1px solid var(--castle-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--castle-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* Main layout */
+    .pricing-layout {
+      display: grid;
+      gap: 24px;
+      padding-bottom: 130px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    /* Service cards */
+    .service-card {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      overflow: hidden;
+      border: 1px solid var(--castle-border);
+      border-radius: var(--radius-lg);
+      background: var(--castle-surface);
+      box-shadow: var(--shadow-sm);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .service-card:focus-within {
+      border-color: rgba(233, 147, 27, 0.65);
+      box-shadow: 0 0 0 4px rgba(233, 147, 27, 0.12), var(--shadow-sm);
+    }
+
+    .service-card--recommended {
+      border: 2px solid var(--castle-orange);
+    }
+
+    .service-card__badge {
+      position: absolute;
+      z-index: 2;
+      top: 12px;
+      right: 12px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--castle-orange);
+      color: #ffffff;
+      font-size: 0.69rem;
+      font-weight: 900;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(233, 147, 27, 0.3);
+    }
+
+    .service-card__header {
+      min-height: 92px;
+      padding: 20px 20px 17px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1px solid var(--castle-border);
+      background: #fbfcfd;
+    }
+
+    .service-card--recommended .service-card__header {
+      padding-right: 138px;
+      background: linear-gradient(135deg, #fff9ef 0%, #ffffff 70%);
+    }
+
+    .service-card__header h2 {
+      margin: 0;
+      color: var(--castle-ink);
+      font-size: 1.35rem;
+      line-height: 1.15;
+    }
+
+    .service-card__duration {
+      flex: 0 0 auto;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: #edf7fb;
+      color: #176984;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .service-card__description {
+      min-height: 160px;
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--castle-border);
+      background: #ffffff;
+    }
+
+    .service-card__description-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--castle-muted);
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .service-card__description p {
+      margin: 0;
+      color: var(--castle-text);
+      font-size: 0.95rem;
+    }
+
+    .service-card__benefits {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+      padding: 0;
+      margin: 12px 0 0;
+      list-style: none;
+    }
+
+    .service-card__benefits li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--castle-text);
+      font-size: 0.81rem;
+      font-weight: 700;
+    }
+
+    .service-card__benefits li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--castle-success);
+      font-weight: 900;
+    }
+
+    .service-card__options {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      padding: 18px 20px 20px;
+    }
+
+    .service-option {
+      width: 100%;
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 13px;
+      border: 1px solid var(--castle-border);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: var(--castle-ink);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+    }
+
+    .service-option:hover {
+      border-color: var(--castle-orange);
+      transform: translateY(-1px);
+    }
+
+    .service-option:focus-visible {
+      outline: 3px solid rgba(47, 173, 222, 0.3);
+      outline-offset: 2px;
+    }
+
+    .service-option.is-selected {
+      border-color: var(--castle-orange);
+      background: #fff8ec;
+      box-shadow: inset 0 0 0 1px var(--castle-orange);
+    }
+
+    .service-option.is-selected .service-option__action {
+      background: var(--castle-orange);
+      color: #ffffff;
+    }
+
+    .service-option__copy {
+      min-width: 0;
+    }
+
+    .service-option__name {
+      display: block;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .service-option__meta {
+      display: block;
+      margin-top: 3px;
+      color: var(--castle-muted);
+      font-size: 0.79rem;
+    }
+
+    .service-option__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-option__price {
+      color: var(--castle-ink);
+      font-size: 1rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .service-option__action {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #eef1f4;
+      color: var(--castle-ink);
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .service-card__note {
+      margin: 2px 2px 0;
+      color: var(--castle-muted);
+      font-size: 0.76rem;
+    }
+
+    /* Quote panel */
+    .quote-panel {
+      display: none;
+    }
+
+    .quote-card {
+      overflow: hidden;
+      border: 1px solid var(--castle-border);
+      border-radius: var(--radius-lg);
+      background: var(--castle-surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quote-card__header {
+      padding: 20px;
+      color: #ffffff;
+      background: var(--castle-ink);
+    }
+
+    .quote-card__header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .quote-card__header h2 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .quote-card__close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+
+    .quote-card__summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quote-metric {
+      padding: 11px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .quote-metric__label {
+      display: block;
+      margin-bottom: 2px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .quote-metric__value {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .quote-card__body {
+      padding: 18px 20px 20px;
+    }
+
+    .quote-section + .quote-section {
+      margin-top: 20px;
+      padding-top: 19px;
+      border-top: 1px solid var(--castle-border);
+    }
+
+    .quote-section__title {
+      margin: 0 0 10px;
+      color: var(--castle-ink);
+      font-size: 0.96rem;
+    }
+
+    .quote-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .quote-list__empty {
+      padding: 15px;
+      border: 1px dashed var(--castle-border);
+      border-radius: 10px;
+      color: var(--castle-muted);
+      text-align: center;
+      font-size: 0.87rem;
+    }
+
+    .quote-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid #edf0f2;
+    }
+
+    .quote-item:last-child {
+      border-bottom: 0;
+    }
+
+    .quote-item__name {
+      display: block;
+      color: var(--castle-ink);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .quote-item__duration {
+      display: block;
+      margin-top: 2px;
+      color: var(--castle-muted);
+      font-size: 0.75rem;
+    }
+
+    .quote-item__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quote-item__price {
+      color: var(--castle-ink);
+      font-size: 0.87rem;
+      font-weight: 900;
+    }
+
+    .quote-item__remove {
+      border: 0;
+      padding: 4px;
+      background: transparent;
+      color: var(--castle-danger);
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+
+    .vehicle-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1fr;
+      gap: 10px;
+    }
+
+    .vehicle-field--model {
+      grid-column: 1 / -1;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--castle-ink);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .field-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 11px;
+      border: 1px solid var(--castle-border);
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--castle-ink);
+      outline: none;
+    }
+
+    .field-input:focus {
+      border-color: var(--castle-blue);
+      box-shadow: 0 0 0 3px rgba(47, 173, 222, 0.14);
+    }
+
+    .field-input[aria-invalid="true"] {
+      border-color: var(--castle-danger);
+    }
+
+    .vehicle-help {
+      margin: 9px 0 0;
+      color: var(--castle-muted);
+      font-size: 0.73rem;
+    }
+
+    .quote-disclaimer {
+      margin: 12px 0 0;
+      color: var(--castle-muted);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .primary-button {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--castle-orange);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 900;
+      box-shadow: 0 9px 20px rgba(233, 147, 27, 0.24);
+      transition: background 150ms ease, transform 150ms ease;
+    }
+
+    .primary-button:hover:not(:disabled) {
+      background: var(--castle-orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .primary-button:focus-visible {
+      outline: 3px solid rgba(47, 173, 222, 0.35);
+      outline-offset: 3px;
+    }
+
+    .primary-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+      box-shadow: none;
+    }
+
+    /* Mobile sticky quote bar */
+    .mobile-quote-bar {
+      position: fixed;
+      z-index: 40;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px max(14px, env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--castle-border);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 -10px 30px rgba(23, 33, 43, 0.13);
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-quote-bar__inner {
+      width: min(620px, 100%);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-quote-bar__label {
+      display: block;
+      color: var(--castle-muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .mobile-quote-bar__total {
+      display: block;
+      color: var(--castle-ink);
+      font-size: 1.18rem;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .mobile-quote-bar__meta {
+      display: block;
+      margin-top: 2px;
+      color: var(--castle-muted);
+      font-size: 0.72rem;
+    }
+
+    .mobile-quote-bar__button {
+      min-height: 48px;
+      border: 0;
+      padding: 0 16px;
+      border-radius: 11px;
+      background: var(--castle-orange);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .quote-overlay {
+      position: fixed;
+      z-index: 49;
+      inset: 0;
+      display: none;
+      background: rgba(12, 18, 24, 0.55);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .quote-overlay.is-open {
+      display: block;
+      opacity: 1;
+    }
+
+    .mobile-quote-sheet {
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: min(86vh, 760px);
+      overflow-y: auto;
+      border-radius: 22px 22px 0 0;
+      background: #ffffff;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(105%);
+      transition: transform 220ms ease;
+      overscroll-behavior: contain;
+    }
+
+    .mobile-quote-sheet.is-open {
+      transform: translateY(0);
+    }
+
+    .mobile-quote-sheet .quote-card {
+      border: 0;
+      border-radius: 22px 22px 0 0;
+      box-shadow: none;
+    }
+
+    .mobile-quote-sheet .quote-card__body {
+      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    }
+
+    body.quote-is-open {
+      overflow: hidden;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      z-index: 70;
+      left: 50%;
+      bottom: calc(86px + env(safe-area-inset-bottom));
+      width: min(420px, calc(100% - 32px));
+      padding: 12px 14px;
+      border-radius: 11px;
+      background: var(--castle-ink);
+      color: #ffffff;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* Tablet and desktop */
+    @media (min-width: 680px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-card__description {
+        min-height: 205px;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .pricing-layout {
+        grid-template-columns: minmax(0, 1fr) 330px;
+        align-items: start;
+        padding-bottom: 70px;
+      }
+
+      .pricing-grid {
+        gap: 22px;
+      }
+
+      .quote-panel {
+        position: sticky;
+        top: 22px;
+        display: block;
+      }
+
+      .quote-card__close,
+      .mobile-quote-bar,
+      .quote-overlay,
+      .mobile-quote-sheet {
+        display: none !important;
+      }
+
+      .toast {
+        bottom: 24px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .navbar .container {
+        min-height: 62px;
+      }
+
+      .navbar-brand img {
+        height: 34px;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a {
+        font-size: 0.86rem;
+      }
+
+      .pricing-hero {
+        padding-top: 31px;
+      }
+
+      .service-card__header,
+      .service-card__description,
+      .service-card__options {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .service-card--recommended .service-card__header {
+        padding-top: 52px;
+        padding-right: 16px;
+      }
+
+      .service-card__description {
+        min-height: 0;
+      }
+
+      .service-card__benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .service-option {
+        padding: 12px;
+      }
+
+      .service-option__right {
+        gap: 6px;
+      }
+
+      .vehicle-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html" aria-label="The Castle Auto Tint home">
+            <img src="./img/logo.png" alt="The Castle Auto Tint logo" />
+          </a>
+        </div>
+        <nav aria-label="Primary navigation">
+          <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html" aria-current="page">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pricing-hero page-container" aria-labelledby="pricing-title">
+      <p class="pricing-hero__eyebrow">The Castle Auto Tint</p>
+      <h1 id="pricing-title">Build Your Tint Quote</h1>
+      <p class="pricing-hero__subtitle">
+        Choose your vehicle and services to see your estimated total and combined installation time before booking.
+      </p>
+      <div class="pricing-hero__steps" aria-label="Booking steps">
+        <span class="pricing-hero__step">1. Select services</span>
+        <span class="pricing-hero__step">2. Review your quote</span>
+        <span class="pricing-hero__step">3. Book with Square</span>
+      </div>
+    </section>
+
+    <section class="pricing-layout page-container" aria-label="Tint pricing options">
+      <div class="pricing-grid">
+        <!-- 1. Ceramic Film -->
+        <article class="service-card service-card--recommended">
+          <span class="service-card__badge">Most Popular</span>
+          <header class="service-card__header">
+            <h2>Ceramic Film</h2>
+            <span class="service-card__duration">3 hr+</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Premium full-vehicle tint</span>
+            <p>
+              Nano Ceramic IR film for all side and rear windows, excluding the front windshield. Our premium option delivers stronger heat control, clearer visibility, and a lifetime warranty.
+            </p>
+            <ul class="service-card__benefits">
+              <li>95% heat rejection</li>
+              <li>100% UV protection</li>
+              <li>Glare reduction</li>
+              <li>Color stabilizer</li>
+              <li>Polarization technology</li>
+              <li>Lifetime warranty</li>
+            </ul>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Ceramic Film vehicle type">
+            <button class="service-option" type="button" data-service-id="ceramic-coupe">
+              <span class="service-option__copy">
+                <span class="service-option__name">Coupe</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$280</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="ceramic-sedan">
+              <span class="service-option__copy">
+                <span class="service-option__name">Sedan</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$300</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="ceramic-suv">
+              <span class="service-option__copy">
+                <span class="service-option__name">Truck / SUV</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$320</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. Carbon Film -->
+        <article class="service-card">
+          <header class="service-card__header">
+            <h2>Carbon Film</h2>
+            <span class="service-card__duration">3 hr+</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Essential full-vehicle tint</span>
+            <p>
+              Carbon film for all side and rear windows, excluding the front windshield. A cost-effective option that improves privacy and comfort while rejecting approximately 50–60% of heat.
+            </p>
+            <ul class="service-card__benefits">
+              <li>50–60% heat rejection</li>
+              <li>Enhanced privacy</li>
+              <li>Improved cabin comfort</li>
+              <li>Up to 5-year warranty</li>
+            </ul>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Carbon Film vehicle type">
+            <button class="service-option" type="button" data-service-id="carbon-coupe">
+              <span class="service-option__copy">
+                <span class="service-option__name">Coupe</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$180</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="carbon-sedan">
+              <span class="service-option__copy">
+                <span class="service-option__name">Sedan</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$200</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="carbon-suv">
+              <span class="service-option__copy">
+                <span class="service-option__name">Truck / SUV</span>
+                <span class="service-option__meta">Full vehicle standard installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$220</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. Windshield -->
+        <article class="service-card">
+          <header class="service-card__header">
+            <h2>Front Windshield</h2>
+            <span class="service-card__duration">1 hr+</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Windshield heat protection</span>
+            <p>
+              Protect your front windshield from harmful UV rays, reduce interior heat, and improve driving comfort with our Ceramic Film.
+            </p>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Front Windshield options">
+            <button class="service-option" type="button" data-service-id="windshield-ceramic">
+              <span class="service-option__copy">
+                <span class="service-option__name">Ceramic Film</span>
+                <span class="service-option__meta">Front windshield installation</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$150</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 4. Front Two -->
+        <article class="service-card">
+          <header class="service-card__header">
+            <h2>Front Two Windows</h2>
+            <span class="service-card__duration">1 hr+</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Front-window match</span>
+            <p>
+              Tint your front two windows for added privacy and sun protection. Choose Carbon or Ceramic Film for the right balance of performance and value.
+            </p>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Front Two Windows film type">
+            <button class="service-option" type="button" data-service-id="front-two-carbon">
+              <span class="service-option__copy">
+                <span class="service-option__name">Carbon Film</span>
+                <span class="service-option__meta">Two front side windows</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$80</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="front-two-ceramic">
+              <span class="service-option__copy">
+                <span class="service-option__name">Ceramic Film</span>
+                <span class="service-option__meta">Two front side windows</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$120</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <p class="service-card__note">Front Two cannot be combined with a full-vehicle package because those windows are already included.</p>
+          </div>
+        </article>
+
+        <!-- 5. Sunroof -->
+        <article class="service-card">
+          <header class="service-card__header">
+            <h2>Sunroof</h2>
+            <span class="service-card__duration">30 min</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Overhead heat control</span>
+            <p>
+              Keep your vehicle cooler by tinting your regular or panoramic sunroof for added comfort and sun protection.
+            </p>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Sunroof type">
+            <button class="service-option" type="button" data-service-id="sunroof-regular">
+              <span class="service-option__copy">
+                <span class="service-option__name">Regular Sunroof</span>
+                <span class="service-option__meta">Single standard-size panel</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$60</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="sunroof-panoramic">
+              <span class="service-option__copy">
+                <span class="service-option__name">Panoramic Sunroof</span>
+                <span class="service-option__meta">Extended panoramic glass</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$100</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 6. Tint Removal -->
+        <article class="service-card">
+          <header class="service-card__header">
+            <h2>Tint Removal</h2>
+            <span class="service-card__duration">1 hr+</span>
+          </header>
+          <div class="service-card__description">
+            <span class="service-card__description-label">Existing-film removal</span>
+            <p>
+              Remove old OEM or aftermarket tint before a new installation. Partial removal starts at $50; full-vehicle removal is available for a fixed price.
+            </p>
+          </div>
+          <div class="service-card__options" role="group" aria-label="Tint Removal coverage">
+            <button class="service-option" type="button" data-service-id="removal-partial">
+              <span class="service-option__copy">
+                <span class="service-option__name">Partial Removal</span>
+                <span class="service-option__meta">Final price depends on coverage and condition</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$20+</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <button class="service-option" type="button" data-service-id="removal-full">
+              <span class="service-option__copy">
+                <span class="service-option__name">Full-Vehicle Removal</span>
+                <span class="service-option__meta">Remove tint from all side and rear windows. Final price depends on coverage and condition</span>
+              </span>
+              <span class="service-option__right">
+                <span class="service-option__price">$100</span>
+                <span class="service-option__action" aria-hidden="true">+</span>
+              </span>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Desktop quote summary -->
+      <aside class="quote-panel" aria-label="Your quote">
+        <div id="desktopQuoteMount"></div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Mobile compact quote bar -->
+  <div class="mobile-quote-bar" aria-label="Quote summary">
+    <div class="mobile-quote-bar__inner">
+      <div>
+        <span class="mobile-quote-bar__label">Estimated total</span>
+        <strong class="mobile-quote-bar__total" data-total-display>$0</strong>
+        <span class="mobile-quote-bar__meta" data-mobile-meta>No services selected</span>
+      </div>
+      <button class="mobile-quote-bar__button" type="button" id="openQuoteButton">
+        Review Quote
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile quote sheet -->
+  <div class="quote-overlay" id="quoteOverlay" aria-hidden="true"></div>
+  <section
+    class="mobile-quote-sheet"
+    id="mobileQuoteSheet"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mobileQuoteTitle"
+  >
+    <div id="mobileQuoteMount"></div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <template id="quoteTemplate">
+    <div class="quote-card">
+      <header class="quote-card__header">
+        <div class="quote-card__header-row">
+          <h2 class="quote-title">Your Quote</h2>
+          <button class="quote-card__close" type="button" data-close-quote aria-label="Close quote">×</button>
+        </div>
+        <div class="quote-card__summary">
+          <div class="quote-metric">
+            <span class="quote-metric__label">Estimated total</span>
+            <strong class="quote-metric__value" data-total-display>$0</strong>
+          </div>
+          <div class="quote-metric">
+            <span class="quote-metric__label">Combined time</span>
+            <strong class="quote-metric__value" data-time-display>—</strong>
+          </div>
+        </div>
+      </header>
+
+      <div class="quote-card__body">
+        <section class="quote-section">
+          <h3 class="quote-section__title">Selected services</h3>
+          <ul class="quote-list" data-quote-list>
+            <li class="quote-list__empty">Choose a service to begin your quote.</li>
+          </ul>
+        </section>
+
+        <section class="quote-section">
+          <h3 class="quote-section__title">Your vehicle</h3>
+          <div class="vehicle-grid">
+            <label>
+              <span class="field-label">Year</span>
+              <input
+                class="field-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="4"
+                autocomplete="off"
+                placeholder="2022"
+                data-vehicle-field="year"
+              />
+            </label>
+            <label>
+              <span class="field-label">Make</span>
+              <input
+                class="field-input"
+                type="text"
+                autocomplete="organization-title"
+                placeholder="Toyota"
+                data-vehicle-field="make"
+              />
+            </label>
+            <label class="vehicle-field--model">
+              <span class="field-label">Model</span>
+              <input
+                class="field-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Camry"
+                data-vehicle-field="model"
+              />
+            </label>
+          </div>
+          <p class="vehicle-help">These details help us confirm the correct installation and appointment length.</p>
+        </section>
+
+        <button class="primary-button" type="button" data-book-button disabled>
+          Continue to Square Appointments
+        </button>
+        <p class="quote-disclaimer">
+          Prices and times are estimates based on the selected services. Final pricing may change for unusual vehicle conditions, oversized glass, or additional removal work.
+        </p>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const SQUARE_BOOKING_URL =
+        "https://app.squareup.com/appointments/book/ty9jyneujwqn93/LR6K0M3N8XA65/start";
+
+      // Existing Formspree endpoint from the original page. The quote is sent
+      // without delaying the Square redirect. Replace this with your own backend
+      // endpoint later if you want tighter matching and reporting.
+      const QUOTE_CAPTURE_ENDPOINT = "https://formspree.io/f/mgvelgwv";
+
+      const DRAFT_STORAGE_KEY = "castleAutoTintQuoteDraft";
+      const LAST_QUOTE_STORAGE_KEY = "castleAutoTintLastQuote";
+
+      const services = {
+        "ceramic-coupe": {
+          id: "ceramic-coupe",
+          group: "fullVehicle",
+          category: "Ceramic Film",
+          name: "Ceramic Film — Coupe",
+          price: 220,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "ceramic-sedan": {
+          id: "ceramic-sedan",
+          group: "fullVehicle",
+          category: "Ceramic Film",
+          name: "Ceramic Film — Sedan",
+          price: 240,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "ceramic-suv": {
+          id: "ceramic-suv",
+          group: "fullVehicle",
+          category: "Ceramic Film",
+          name: "Ceramic Film — Truck / SUV",
+          price: 260,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "carbon-coupe": {
+          id: "carbon-coupe",
+          group: "fullVehicle",
+          category: "Carbon Film",
+          name: "Carbon Film — Coupe",
+          price: 180,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "carbon-sedan": {
+          id: "carbon-sedan",
+          group: "fullVehicle",
+          category: "Carbon Film",
+          name: "Carbon Film — Sedan",
+          price: 200,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "carbon-suv": {
+          id: "carbon-suv",
+          group: "fullVehicle",
+          category: "Carbon Film",
+          name: "Carbon Film — Truck / SUV",
+          price: 220,
+          minutes: 180,
+          durationLabel: "3 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "windshield-ceramic": {
+          id: "windshield-ceramic",
+          group: "windshield",
+          category: "Front Windshield",
+          name: "Front Windshield — Ceramic Film",
+          price: 150,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "front-two-carbon": {
+          id: "front-two-carbon",
+          group: "frontTwo",
+          category: "Front Two Windows",
+          name: "Front Two Windows — Carbon Film",
+          price: 80,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "front-two-ceramic": {
+          id: "front-two-ceramic",
+          group: "frontTwo",
+          category: "Front Two Windows",
+          name: "Front Two Windows — Ceramic Film",
+          price: 120,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: true,
+          startingPrice: false
+        },
+        "sunroof-regular": {
+          id: "sunroof-regular",
+          group: "sunroof",
+          category: "Sunroof",
+          name: "Regular Sunroof",
+          price: 50,
+          minutes: 30,
+          durationLabel: "30 min",
+          hasPlusTime: false,
+          startingPrice: false
+        },
+        "sunroof-panoramic": {
+          id: "sunroof-panoramic",
+          group: "sunroof",
+          category: "Sunroof",
+          name: "Panoramic Sunroof",
+          price: 80,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: false,
+          startingPrice: false
+        },
+        "removal-partial": {
+          id: "removal-partial",
+          group: "removal",
+          category: "Tint Removal",
+          name: "Partial Tint Removal",
+          price: 50,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: false,
+          startingPrice: true
+        },
+        "removal-full": {
+          id: "removal-full",
+          group: "removal",
+          category: "Tint Removal",
+          name: "Full-Vehicle Tint Removal",
+          price: 100,
+          minutes: 60,
+          durationLabel: "1 hr+",
+          hasPlusTime: false,
+          startingPrice: false
+        }
+      };
+
+      const state = {
+        selectedIds: new Set(),
+        vehicle: {
+          year: "",
+          make: "",
+          model: ""
+        }
+      };
+
+      const quoteTemplate = document.getElementById("quoteTemplate");
+      const desktopQuoteMount = document.getElementById("desktopQuoteMount");
+      const mobileQuoteMount = document.getElementById("mobileQuoteMount");
+      const mobileQuoteSheet = document.getElementById("mobileQuoteSheet");
+      const quoteOverlay = document.getElementById("quoteOverlay");
+      const openQuoteButton = document.getElementById("openQuoteButton");
+      const toast = document.getElementById("toast");
+      let toastTimer;
+
+      function mountQuoteCards() {
+        const desktopQuote = quoteTemplate.content.cloneNode(true);
+        const mobileQuote = quoteTemplate.content.cloneNode(true);
+
+        desktopQuote.querySelector(".quote-title").id = "desktopQuoteTitle";
+        mobileQuote.querySelector(".quote-title").id = "mobileQuoteTitle";
+
+        desktopQuoteMount.appendChild(desktopQuote);
+        mobileQuoteMount.appendChild(mobileQuote);
+      }
+
+      function getSelectedServices() {
+        return Array.from(state.selectedIds)
+          .map((id) => services[id])
+          .filter(Boolean);
+      }
+
+      function getGroupSelection(group) {
+        return getSelectedServices().find((service) => service.group === group);
+      }
+
+      function selectService(serviceId) {
+        const service = services[serviceId];
+        if (!service) return;
+
+        if (state.selectedIds.has(serviceId)) {
+          state.selectedIds.delete(serviceId);
+          syncUI();
+          return;
+        }
+
+        // One option per category/group.
+        getSelectedServices()
+          .filter((selected) => selected.group === service.group)
+          .forEach((selected) => state.selectedIds.delete(selected.id));
+
+        // Full-vehicle tint and Front Two are alternatives, not add-ons.
+        if (service.group === "fullVehicle") {
+          const frontTwo = getGroupSelection("frontTwo");
+          if (frontTwo) {
+            state.selectedIds.delete(frontTwo.id);
+            showToast("Front Two was removed because it is already included with full-vehicle tint.");
+          }
+        }
+
+        if (service.group === "frontTwo") {
+          const fullVehicle = getGroupSelection("fullVehicle");
+          if (fullVehicle) {
+            state.selectedIds.delete(fullVehicle.id);
+            showToast("The full-vehicle package was replaced with Front Two Windows.");
+          }
+        }
+
+        state.selectedIds.add(serviceId);
+        syncUI();
+      }
+
+      function removeService(serviceId) {
+        state.selectedIds.delete(serviceId);
+        syncUI();
+      }
+
+      function calculateQuote() {
+        const selected = getSelectedServices();
+        const total = selected.reduce((sum, service) => sum + service.price, 0);
+        const minutes = selected.reduce((sum, service) => sum + service.minutes, 0);
+        const hasStartingPrice = selected.some((service) => service.startingPrice);
+        const hasPlusTime = selected.some((service) => service.hasPlusTime);
+
+        return {
+          selected,
+          total,
+          minutes,
+          hasStartingPrice,
+          hasPlusTime
+        };
+      }
+
+      function formatPrice(amount, isStartingPrice) {
+        if (amount === 0) return "$0";
+        return `${isStartingPrice ? "From " : ""}$${amount}`;
+      }
+
+      function formatDuration(minutes, hasPlusTime) {
+        if (!minutes) return "—";
+
+        const hours = Math.floor(minutes / 60);
+        const remainder = minutes % 60;
+        const parts = [];
+
+        if (hours) parts.push(`${hours} hr`);
+        if (remainder) parts.push(`${remainder} min`);
+
+        return `${parts.join(" ")}${hasPlusTime ? "+" : ""}`;
+      }
+
+      function formatServicePrice(service) {
+        return `${service.startingPrice ? "$" + service.price + "+" : "$" + service.price}`;
+      }
+
+      function renderOptionStates() {
+        document.querySelectorAll("[data-service-id]").forEach((button) => {
+          const serviceId = button.dataset.serviceId;
+          const isSelected = state.selectedIds.has(serviceId);
+          button.classList.toggle("is-selected", isSelected);
+          button.setAttribute("aria-pressed", String(isSelected));
+
+          const action = button.querySelector(".service-option__action");
+          if (action) action.textContent = isSelected ? "✓" : "+";
+        });
+      }
+
+      function renderQuoteCards(quote) {
+        document.querySelectorAll("[data-total-display]").forEach((element) => {
+          element.textContent = formatPrice(quote.total, quote.hasStartingPrice);
+        });
+
+        document.querySelectorAll("[data-time-display]").forEach((element) => {
+          element.textContent = formatDuration(quote.minutes, quote.hasPlusTime);
+        });
+
+        document.querySelectorAll("[data-quote-list]").forEach((list) => {
+          list.innerHTML = "";
+
+          if (!quote.selected.length) {
+            const empty = document.createElement("li");
+            empty.className = "quote-list__empty";
+            empty.textContent = "Choose a service to begin your quote.";
+            list.appendChild(empty);
+            return;
+          }
+
+          quote.selected.forEach((service) => {
+            const item = document.createElement("li");
+            item.className = "quote-item";
+            item.innerHTML = `
+              <div>
+                <span class="quote-item__name"></span>
+                <span class="quote-item__duration"></span>
+              </div>
+              <div class="quote-item__right">
+                <span class="quote-item__price"></span>
+                <button class="quote-item__remove" type="button">Remove</button>
+              </div>
+            `;
+
+            item.querySelector(".quote-item__name").textContent = service.name;
+            item.querySelector(".quote-item__duration").textContent = service.durationLabel;
+            item.querySelector(".quote-item__price").textContent = formatServicePrice(service);
+            item
+              .querySelector(".quote-item__remove")
+              .addEventListener("click", () => removeService(service.id));
+            list.appendChild(item);
+          });
+        });
+
+        const mobileMeta = document.querySelector("[data-mobile-meta]");
+        if (mobileMeta) {
+          mobileMeta.textContent = quote.selected.length
+            ? `${quote.selected.length} service${quote.selected.length === 1 ? "" : "s"} • ${formatDuration(
+                quote.minutes,
+                quote.hasPlusTime
+              )}`
+            : "No services selected";
+        }
+
+        document.querySelectorAll("[data-book-button]").forEach((button) => {
+          button.disabled = quote.selected.length === 0;
+        });
+      }
+
+      function renderVehicleFields() {
+        document.querySelectorAll("[data-vehicle-field]").forEach((input) => {
+          const field = input.dataset.vehicleField;
+          if (document.activeElement !== input) {
+            input.value = state.vehicle[field] || "";
+          }
+        });
+      }
+
+      function persistDraft() {
+        const quote = calculateQuote();
+        const draft = {
+          selectedIds: quote.selected.map((service) => service.id),
+          vehicle: state.vehicle,
+          updatedAt: new Date().toISOString()
+        };
+
+        try {
+          localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+        } catch (error) {
+          console.warn("Unable to save quote draft:", error);
+        }
+      }
+
+      function loadDraft() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(DRAFT_STORAGE_KEY));
+          if (!saved) return;
+
+          if (Array.isArray(saved.selectedIds)) {
+            saved.selectedIds
+              .filter((id) => Object.prototype.hasOwnProperty.call(services, id))
+              .forEach((id) => state.selectedIds.add(id));
+          }
+
+          if (saved.vehicle && typeof saved.vehicle === "object") {
+            state.vehicle.year = String(saved.vehicle.year || "").slice(0, 4);
+            state.vehicle.make = String(saved.vehicle.make || "").slice(0, 60);
+            state.vehicle.model = String(saved.vehicle.model || "").slice(0, 60);
+          }
+        } catch (error) {
+          console.warn("Unable to load quote draft:", error);
+        }
+      }
+
+      function syncUI() {
+        const quote = calculateQuote();
+        renderOptionStates();
+        renderQuoteCards(quote);
+        renderVehicleFields();
+        persistDraft();
+      }
+
+      function showToast(message) {
+        window.clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 3000);
+      }
+
+      function openQuoteSheet() {
+        quoteOverlay.classList.add("is-open");
+        mobileQuoteSheet.classList.add("is-open");
+        quoteOverlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("quote-is-open");
+
+        window.setTimeout(() => {
+          const closeButton = mobileQuoteSheet.querySelector("[data-close-quote]");
+          if (closeButton) closeButton.focus();
+        }, 50);
+      }
+
+      function closeQuoteSheet() {
+        quoteOverlay.classList.remove("is-open");
+        mobileQuoteSheet.classList.remove("is-open");
+        quoteOverlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("quote-is-open");
+        openQuoteButton.focus();
+      }
+
+      function validateVehicle() {
+        const currentYear = new Date().getFullYear() + 1;
+        const yearNumber = Number(state.vehicle.year);
+        const invalidFields = [];
+
+        if (!/^\d{4}$/.test(state.vehicle.year) || yearNumber < 1900 || yearNumber > currentYear) {
+          invalidFields.push("year");
+        }
+        if (state.vehicle.make.trim().length < 2) invalidFields.push("make");
+        if (state.vehicle.model.trim().length < 1) invalidFields.push("model");
+
+        document.querySelectorAll("[data-vehicle-field]").forEach((input) => {
+          const invalid = invalidFields.includes(input.dataset.vehicleField);
+          input.setAttribute("aria-invalid", String(invalid));
+        });
+
+        return invalidFields;
+      }
+
+      function createQuoteId() {
+        const timestamp = Date.now().toString(36).toUpperCase();
+        const random = Math.random().toString(36).slice(2, 6).toUpperCase();
+        return `CAT-${timestamp}-${random}`;
+      }
+
+      function buildQuotePayload() {
+        const quote = calculateQuote();
+        return {
+          quoteId: createQuoteId(),
+          vehicle: {
+            year: state.vehicle.year.trim(),
+            make: state.vehicle.make.trim(),
+            model: state.vehicle.model.trim()
+          },
+          services: quote.selected.map((service) => ({
+            id: service.id,
+            category: service.category,
+            name: service.name,
+            price: service.price,
+            priceLabel: formatServicePrice(service),
+            duration: service.durationLabel
+          })),
+          estimatedTotal: quote.total,
+          estimatedTotalLabel: formatPrice(quote.total, quote.hasStartingPrice),
+          estimatedDurationMinutes: quote.minutes,
+          estimatedDurationLabel: formatDuration(quote.minutes, quote.hasPlusTime),
+          submittedAt: new Date().toISOString(),
+          source: "The Castle Auto Tint pricing page"
+        };
+      }
+
+      function saveLastQuote(payload) {
+        try {
+          localStorage.setItem(LAST_QUOTE_STORAGE_KEY, JSON.stringify(payload));
+        } catch (error) {
+          console.warn("Unable to save last quote:", error);
+        }
+      }
+
+      function captureQuote(payload) {
+        if (!QUOTE_CAPTURE_ENDPOINT) return;
+
+        const formspreePayload = {
+          _subject: `New Website Quote ${payload.quoteId}`,
+          quote_id: payload.quoteId,
+          vehicle: `${payload.vehicle.year} ${payload.vehicle.make} ${payload.vehicle.model}`,
+          services: payload.services
+            .map((service) => `${service.name} (${service.priceLabel}, ${service.duration})`)
+            .join(" | "),
+          estimated_total: payload.estimatedTotalLabel,
+          estimated_duration: payload.estimatedDurationLabel,
+          submitted_at: payload.submittedAt,
+          payload_json: JSON.stringify(payload)
+        };
+
+        fetch(QUOTE_CAPTURE_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(formspreePayload),
+          keepalive: true
+        }).catch((error) => {
+          console.warn("Quote capture did not complete before redirect:", error);
+        });
+      }
+
+      function continueToSquare() {
+        const quote = calculateQuote();
+        if (!quote.selected.length) {
+          showToast("Please select at least one service before booking.");
+          return;
+        }
+
+        const invalidFields = validateVehicle();
+        if (invalidFields.length) {
+          showToast("Please enter a valid vehicle year, make, and model.");
+          const firstInvalid = document.querySelector(
+            `.mobile-quote-sheet.is-open [data-vehicle-field="${invalidFields[0]}"], [data-vehicle-field="${invalidFields[0]}"]`
+          );
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        const payload = buildQuotePayload();
+        saveLastQuote(payload);
+        captureQuote(payload);
+
+        // Redirect immediately; the quote-saving request runs in the background.
+        window.location.assign(SQUARE_BOOKING_URL);
+      }
+
+      function bindEvents() {
+        document.querySelectorAll("[data-service-id]").forEach((button) => {
+          button.addEventListener("click", () => selectService(button.dataset.serviceId));
+        });
+
+        document.addEventListener("input", (event) => {
+          const input = event.target.closest("[data-vehicle-field]");
+          if (!input) return;
+
+          const field = input.dataset.vehicleField;
+          let value = input.value;
+
+          if (field === "year") {
+            value = value.replace(/\D/g, "").slice(0, 4);
+            input.value = value;
+          }
+
+          state.vehicle[field] = value;
+          input.setAttribute("aria-invalid", "false");
+
+          document.querySelectorAll(`[data-vehicle-field="${field}"]`).forEach((matchingInput) => {
+            if (matchingInput !== input) matchingInput.value = value;
+          });
+
+          persistDraft();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (event.target.closest("[data-book-button]")) {
+            continueToSquare();
+          }
+
+          if (event.target.closest("[data-close-quote]")) {
+            closeQuoteSheet();
+          }
+        });
+
+        openQuoteButton.addEventListener("click", openQuoteSheet);
+        quoteOverlay.addEventListener("click", closeQuoteSheet);
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && mobileQuoteSheet.classList.contains("is-open")) {
+            closeQuoteSheet();
+          }
+        });
+      }
+
+      mountQuoteCards();
+      loadDraft();
+      bindEvents();
+      syncUI();
+    })();
+  </script>
+</body>
+</html>
