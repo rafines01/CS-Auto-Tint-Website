@@ -116,6 +116,8 @@ a {
   line-height: 1.75;
 }
 
+
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -132,14 +134,6 @@ a {
   text-transform: uppercase;
 }
 
-.eyebrow::before {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: var(--orange);
-  content: "";
-}
 
 /* =========================
    Shared Header / Navigation
